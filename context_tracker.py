@@ -10,6 +10,8 @@ class ContextTracker:
 
     def add_tokens(self, tokens):
         self.context.extend(tokens)
+        if len(self.context) > 100000:
+            self.context = self.context[-1000:]
 
     def get_tokens(self):
         return self.context
